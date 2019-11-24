@@ -1,104 +1,86 @@
 function findSmallNums(nums) {
   if (!nums) throw new Error("nums is required");
-  
-    let newNumber = [];
-    for(let i=0; i<nums.length; i++){
-      if(nums[i] < 1){
-        newNumber.push(nums[i]);
-      }
-    }
-    return newNumber;
-  }
-  
+  // Your code here
+  const smallNumbers = nums.filter(number => {
+    return number < 1;
+  });
+  return smallNumbers;
+}
 
 function findNamesBeginningWith(names, char) {
   if (!names) throw new Error("names is required");
   if (!char) throw new Error("char is required");
-  //return array of names begin with s
-  const namesBeginWithS = names.filter(function (character) {
-    if (character[0] === char) {
+  // Your code here
+  const findNames = names.filter(function (name) {
+    if (name[0] === char) {
       return true;
     } else {
       return false;
     }
   });
-  return namesBeginWithS
-}
- 
- function findVerbs(words) {
-  if (!words) throw new Error("words is required");
-  const verb=[];
-  for (let i= 0; i<words.length; i++){
-  const word=words[i];
-  const first3Chars = word.slice(0,3);
-  if (first3Chars=== "to "){
-    verb.push(word);
-  }
-}
-return verbs;
+  return findNames
 }
 
+function findVerbs(words) {
+  if (!words) throw new Error("words is required");
+  const verbsFound = words.filter(function (word) {
+    const findTo = (word.slice(0, 3));
+    if (findTo === "to ") {
+      return true
+    } else {
+      return false
+    }
+  })
+  return verbsFound;
+}
 
 function getIntegers(nums) {
   if (!nums) throw new Error("nums is required");
- 
-    let numberIntegers = [];
-    nums.forEach(function (eachNums) {
-      if (Number.isInteger(eachNums)) {
-        numberIntegers.push(eachNums)
-      }
-    })
-    return numberIntegers
-  }
-  
+  let areIntegers = [];
+  nums.forEach(function (eachNums) {
+    if (Number.isInteger(eachNums)) {
+      areIntegers.push(eachNums)
+    }
+  })
+  return areIntegers
+}
 
 function getCities(users) {
   if (!users) throw new Error("users is required");
-  const cities=[]
- for ( let i= 0;i<users.length; i++){
-  const user=users[i];
-  const displayName=user.data.city.displayName;
-  cities.push(displayName);
- }
- return cities;
-
-
+  const userCities = users.map(function (user) {
+    const userData = user.data.city.displayName
+    return userData
+  })
+  return userCities
 }
 
 function getSquareRoots(nums) {
   if (!nums) throw new Error("nums is required");
-  const squareRoots = nums.map(function (num) {
-    let squared = Math.sqrt(num)
-    let toTwoDecimals = Math.round(squared * 100) / 100
-    return toTwoDecimals
-  })
+  const squareRoots = nums.map(n => {
+    return Math.round(Math.sqrt(n) * 100) / 100
+  });
   return squareRoots
 }
 
 function findSentencesContaining(sentences, str) {
   if (!sentences) throw new Error("sentences is required");
   if (!str) throw new Error("str is required");
-  let specifiedStringSentences = [];
+  let resultSentences = [];
   sentences.forEach(function (sentence) {
     if (sentence.toLowerCase().includes(str)) {
-      specifiedStringSentences .push(sentence)
+      resultSentences.push(sentence)
     }
   })
-  return specifiedStringSentences
+  return resultSentences
 }
-
 
 function getLongestSides(triangles) {
   if (!triangles) throw new Error("triangles is required");
-
-  const largestEdges=[];
-for(let i=0;i<triangles.length;i++){
-const triangle =triangle[i];
-triangle.sort(function (a, b){return b-a
-});
-const largestEdge=triangle[0]
-largestEdges.push(largestEdge);
-return largestEdges;
+  let longestSides = [];
+  triangles.forEach(function (triangle) {
+    longestSides.push(Math.max(...triangle));
+  })
+  return longestSides
 }
 
 module.exports = {
@@ -110,4 +92,4 @@ module.exports = {
   getSquareRoots,
   findSentencesContaining,
   getLongestSides
-}
+};
