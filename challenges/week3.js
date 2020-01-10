@@ -18,7 +18,7 @@ return squaredNums;
 // }
 // const squredNums=[]
 // for(let i =0;i<length;i=i+1){
-// const num =nums[1];
+// const num =nums[n 1];
 // squaredNums.push(squared);
 // }
 // return squaredNums;
@@ -36,12 +36,29 @@ return squaredNums;
 
 function camelCaseWords(words) {
   if (words === undefined) throw new Error("words is required");
-  
+  if(words.length > 1){
+    for(let i=1; i<words.length;i++){
+      let word = words[i];
+      let wordUp = word.charAt(0).toUpperCase()+word.slice(1);
+      words[i] = wordUp;
+    }
+  }else{
+    return words.join("");
+  }
+  return words.join("");
 }
+
+
 
 function getTotalSubjects(people) {
   if (people === undefined) throw new Error("people is required");
+  let total = 0;
+  people.forEach(function (item) {
+    total = total + item.subjects.length;
+  })
+  return total;
 }
+
 
 function checkIngredients(menu, ingredient) {
   if (menu === undefined) throw new Error("menu is required");
@@ -52,18 +69,29 @@ function checkIngredients(menu, ingredient) {
     if (menuItemIngredient===
       ingredient){
       foundFoodItem=true;
-    }
-
-    });
+     }
   });
+});
   return foundFoodItem;
 }
 
 function duplicateNumbers(arr1, arr2) {
   if (arr1 === undefined) throw new Error("arr1 is required");
   if (arr2 === undefined) throw new Error("arr2 is required");
-  // Your code here!
+  let newArr = [];
+  for(let i=0; i<arr1.length; i++){
+    for(let j=0; j<arr2.length; j++){
+      if(arr1[i] === arr2[j]){
+        let n = arr1[i];
+        if(!newArr.includes(n)){
+        newArr.push(n);
+        }
+      }
+    }
+  }
+  return newArr.sort();
 }
+
 
 module.exports = {
   getSquares,
